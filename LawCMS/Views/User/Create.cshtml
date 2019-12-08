@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row clearfix" ng-controller="userCreateController">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2 ng-show="isEditMode == false">Create User</h2>
+                <h2 ng-show="isEditMode == true">Update User</h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);">Refresh</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <form id="wizard_with_validation" method="POST">
+                    <h3>Account Information</h3>
+                    @*<fieldset>*@
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" ng-model="User.FirstName" class="form-control" name="username" required>
+                                    <label class="form-label">FirstName*</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" ng-model="User.LastName" class="form-control" name="username" required>
+                                    <label class="form-label">LastName*</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" ng-model="User.Email" class="form-control" name="username" required>
+                                    <label class="form-label">Email*</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" ng-model="User.PhoneNo" class="form-control" name="username" required>
+                                    <label class="form-label">PhoneNo*</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="password" ng-model="User.Password" class="form-control" name="password" id="password" required>
+                            <label class="form-label">Password*</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="password" ng-model="User.ConfirmPassword" class="form-control" name="confirm" required>
+                            <label class="form-label">Confirm Password*</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-float">
+                        <div class="">
+                            <div class="demo-checkbox">
+                                <input type="checkbox" ng-model="User.Active" id="basic_checkbox_2" class="filled-in" checked="">
+                                <label for="basic_checkbox_2">Active</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-hide="isEditMode == true" class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <select ng-model="User.Role" class="form-control">
+                                    <option ng-repeat="role in roles" value="{{role}}">{{role}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    @*</fieldset>*@
+                    <button ng-show="isEditMode == false" style="float:right;" ng-click="createUser();">Submit</button>
+                    <button ng-show="isEditMode == true" style="float:right;" ng-click="updateUser();">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
